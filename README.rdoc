@@ -1,0 +1,34 @@
+I've accidentally added a picture of my bum to this repo
+
+  $ git show 84c344
+  commit 84c344c1874736a6d063ed45abe21e20815525b9
+  Author: Matthew Rudy Jacobs <MatthewRudyJacobs@gmail.com>
+  Date:   Wed Sep 15 18:25:35 2010 +0800
+
+    add my bum
+
+  diff --git a/mybum.jpg b/mybum.jpg
+  new file mode 100644
+  index 0000000..018be38
+  --- /dev/null
+  +++ b/mybum.jpg
+  @@ -0,0 +1 @@
+  +a picture of my bum
+
+so let's try and wipe it from history.
+
+  $ git filter-branch --tree-filter 'rm -f mybum.jpg' HEAD
+  Rewrite 76a50a3b1b3263d84517c8e6241ec0bf2bf36fdc (4/4)
+  Ref 'refs/heads/master' was rewritten
+
+now commit 84c344 is still there, but it is not in our branch.
+in master we've rewritten this commit to
+
+  $ git show f59366
+  commit f59366420a8b753de5a0d2812e0abbfb95fccfdf
+  Author: Matthew Rudy Jacobs <MatthewRudyJacobs@gmail.com>
+  Date:   Wed Sep 15 18:25:35 2010 +0800
+
+    add my bum
+
+of course my bum is no longer there.
